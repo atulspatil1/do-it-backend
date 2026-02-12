@@ -16,10 +16,7 @@ public class TodoService {
     }
 
     public Todo createTodo(String title) {
-        Todo todo = Todo.builder()
-                .title(title)
-                .completed(false)
-                .build();
+        Todo todo = new Todo(title, false);
         return repository.save(todo);
     }
 
