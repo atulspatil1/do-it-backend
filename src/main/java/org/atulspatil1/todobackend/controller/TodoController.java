@@ -30,7 +30,7 @@ public class TodoController {
     }
 
     // Update todo
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public Todo updateTodoStatus(
             @PathVariable Long id,
             @RequestParam boolean completed) {
@@ -38,7 +38,7 @@ public class TodoController {
     }
 
     // Delete todo
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public void deleteTodo(@PathVariable Long id) {
         todoService.deleteTodo(id);
     }
