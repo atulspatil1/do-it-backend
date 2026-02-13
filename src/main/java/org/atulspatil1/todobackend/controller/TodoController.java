@@ -1,6 +1,7 @@
 package org.atulspatil1.todobackend.controller;
 
 import org.atulspatil1.todobackend.entity.Todo;
+import org.atulspatil1.todobackend.entity.TodoRequest;
 import org.atulspatil1.todobackend.service.TodoService;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,12 +30,18 @@ public class TodoController {
         return todoService.getTodosByStatus(completed);
     }
 
+    // Get Todo by id
+    @GetMapping("/{id}")
+    public Todo getTodo(@PathVariable Long id) {
+        return todoService.getTodo(id);
+    }
+
     // Update todo
     @PutMapping("/{id}")
-    public Todo updateTodoStatus(
+    public Todo updateTodo(
             @PathVariable Long id,
-            @RequestParam boolean completed) {
-        return todoService.toogleTodo(id, completed);
+            @RequestBody TodoRequest todoRequest) {
+        return todoService.updateTodo(id, todoRequest);
     }
 
     // Delete todo
